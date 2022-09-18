@@ -1,0 +1,19 @@
+package uk.ac.rhul.cs2800;
+
+/** 
+ * Custom exception class for the Bad Type Exception for when the type does not match the method called.
+ * 
+ * @author Kevin
+ *
+ */
+public class BadTypeException extends Exception {
+  
+  /**
+   * 
+   * @param badTypeExMsg is the message to be used for the Exception
+   */
+  public BadTypeException(String badTypeExMsg) {
+    super(badTypeExMsg);
+  }
+
+}

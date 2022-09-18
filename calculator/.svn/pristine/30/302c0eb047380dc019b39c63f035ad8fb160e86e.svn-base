@@ -1,0 +1,88 @@
+package uk.ac.rhul.cs2800;
+
+/**
+ * This class defines what the type of entry a value is that has been entered into the calculator
+ * 
+ * @author Kevin
+ *
+ */
+public class Entry {
+
+  Type type;
+  float number;
+  Symbol other;
+  String str;
+
+  /**
+   * Constructor for an entry object number
+   *
+   * @param value is the number entered by the calculator user
+   */
+  Entry(float value) {
+    value = this.number;
+    this.type = Type.NUMBER;
+  }
+
+  /**
+   * Constructor for an entry object symbol.
+   *
+   * @param which is the symbol entered by the calculator user defined by the Symbol enum
+   */
+  Entry(Symbol which) {
+    which = this.other;
+    this.type = Type.SYMBOL;
+  }
+
+  /**
+   * Finds the value for the numeric entry object.
+   * 
+   * @return the numeric value of a number entry
+   * @throws BadTypeException when the type is not a number.
+   */
+  public float getValue() throws BadTypeException {
+    if (this.type != Type.NUMBER) {
+      throw new BadTypeException("Type does not match method called. Not a number.");
+    } else {
+      return this.number;
+    }
+  }
+
+  /**
+   * Finds the symbolic value of the entry object.
+   * 
+   * @return the symbol enum of which type of symbol the object is
+   * @throws BadTypeException when the type is not a symbol
+   */
+  public Symbol getSymbol() throws BadTypeException {
+    if (this.type != Type.SYMBOL) {
+      throw new BadTypeException("Type does not match method called. Not a Symbol.");
+    } else {
+      return this.other;
+    }
+  }
+
+  /**
+   * Gets the type of entry that has been constructed (Number, String, Symbol, Invalid).
+   * 
+   * @return the type of entry that has been entered into the calculator
+   */
+  public Type getType() {
+    return this.type;
+  }
+
+  /**
+   * Gets the string version of the symbol so the enum can be printed.
+   * 
+   * @return the string associated with the specific Symbols enum
+   * @throws BadTypeException when type is not Symbol
+   */
+  public String getString() throws BadTypeException {
+    if (this.type != Type.SYMBOL) {
+      throw new BadTypeException(
+          "Type does not match method called. It's not a symbol so has no string to get.");
+    } else {
+      return this.str;
+    }
+  }
+
+}

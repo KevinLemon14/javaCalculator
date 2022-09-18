@@ -1,0 +1,86 @@
+package uk.ac.rhul.cs2800;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.util.EmptyStackException;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class TestStack {
+
+  @Test
+  /**
+   * Test 1
+   * 
+   * Test creating a new Stack class
+   */
+  void testSetUp() {
+    Stack testStack = new Stack();
+  }
+
+  /**
+   * Testing Stack and Entry objects created before every test
+   */
+  private static Stack testingStack;
+  private static Entry entry1;
+
+
+  @BeforeEach
+  public void createStackAndEntries() {
+    testingStack = new Stack();
+    entry1 = new Entry(12f);
+  }
+
+  @Test
+  void test2_Push() { // Test 2
+    assertEquals(testingStack.push(entry1), entry1, "Pushing item of value 1 onto stack.");
+    /**
+     * Hard coded to return 1.
+     * 
+     * Now it returns correct value.
+     */
+
+  }
+
+  @Test
+  void test3_CheckSize() {
+    assertEquals(testingStack.size(), 0, "The size of the stack should be 0.");
+    /**
+     * Hard coded to return 0.
+     * 
+     * Updated to return stack.size().
+     */
+  }
+
+  @Test
+  void test4_EmptyPop() {
+    assertThrows(EmptyStackException.class, () -> testingStack.pop(),
+        "You can't pop an empty stack.");
+    /**
+     * Needs to check size of Stack is 0 to throw exception.
+     * 
+     * 
+     * If statement added to throw exception, and hard coded to return 0.
+     */
+  }
+
+  @Test
+  void test5_PushAndPop() {
+    testingStack.push(entry1);
+    assertEquals(testingStack.size(), 1, "After pushing, size should be 1.");
+    testingStack.pop();
+    assertEquals(testingStack.size(), 0, "After popping, size should be 0.");
+  }
+
+  @Test
+  void test6_Top() {
+    testingStack.push(entry1);
+    assertEquals(testingStack.top(), entry1, "Top of stack is 0.");
+    /**
+     * Hard coded to return 0.
+     * 
+     * Updated to return the top of stack instead of 0.
+     */
+  }
+
+}

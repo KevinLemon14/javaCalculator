@@ -1,0 +1,71 @@
+package uk.ac.rhul.cs2800;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class TestEntry {
+
+  private static Entry testFloat;
+  private static Entry testSymbol;
+
+  /**
+   * Creates two global entry objects for all tests to use.
+   */
+  @BeforeEach
+  public void createEntry() {
+    testFloat = new Entry(12.2f);
+    testSymbol = new Entry(Symbol.MULTIPLY);
+  }
+ 
+  @Test
+  void test1_CreateFloatAndGetValue() {
+    try {
+      assertEquals(testFloat.getValue(), testFloat.number, "Value of float returned.");
+    } catch (BadTypeException e) {
+
+      e.printStackTrace();
+    }
+    /**
+     * Need to create Entry class with constructor for Entry that takes a float.
+     * getValue method created which returns value of number variable.
+     */
+  }
+  
+  @Test
+  void test2_CreateSymbolAndGetSymbol() {
+    try {
+      assertEquals(testSymbol.getSymbol(), testSymbol.other, "Correct type of symbol is returned.");
+    } catch (BadTypeException e) {
+      e.printStackTrace();
+    }
+    /**
+     * Need to create constructor for Entry for type Symbol.
+     * getSymbol method created which returns value of 'other' variable.
+     */
+  }
+  
+  @Test
+  void test3_GetType() {
+
+    assertEquals(testFloat.getType(), testFloat.type, "Type returned correctly.");
+    assertEquals(testSymbol.getType(), testSymbol.type, "Type returned correctly.");
+    /*
+     * Method to return the type associated with the entry object needs to be created so the test can
+     * pass. Passed first time after creating method.
+     */
+  }
+  
+  @Test
+  void test4_GetString() {
+    try {
+      assertEquals(testSymbol.getString(), testSymbol.str, "String returned correctly.");
+    } catch (BadTypeException e) {
+      e.printStackTrace();
+    }
+    /*
+     * Create the getString method and global String variable called str so test can pass.
+     * Passed first time after creating methods and variables.
+     */
+  }
+}
